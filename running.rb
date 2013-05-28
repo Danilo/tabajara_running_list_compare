@@ -35,7 +35,7 @@ def compare(array_a, array_b, diff_list)
 end
 
 file_one_list = []
-LoadList("RUNNING-Coasin.LST", file_one_list)
+LoadList("RUNNING-Client.LST", file_one_list)
 #puts file_one_list[0]
 #puts "----------------------------------------------------------------------"
 file_two_list = []
