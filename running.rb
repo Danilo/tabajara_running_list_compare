@@ -1,7 +1,8 @@
+$first_running_file, $second_running_file = ARGV
 
 def LoadList(filename, list)
     input = File.open(filename)
-        input.read().each do |first_file_line|
+    input.read().each_line do |first_file_line|
         list.push(first_file_line.match(/[^SYSTEM;]\d{1,9}.{4}/))
     end
     input.close()
@@ -26,8 +27,8 @@ def compare(array_a, array_b, diff_list)
                 diff_list.push(array_a[i].to_s)
             else
                 if quarter_array_a.to_s == quarter_array_b.to_s
-                    diff_list.push("<<" + array_a[i].to_s)
-                    diff_list.push(">>" + array_b[j].to_s)
+                    diff_list.push("#{$first_running_file} <<" + array_a[i].to_s)
+                    diff_list.push("#{$second_running_file} >>" + array_b[j].to_s)
                 end
             end
         end
@@ -35,11 +36,11 @@ def compare(array_a, array_b, diff_list)
 end
 
 file_one_list = []
-LoadList("RUNNING-Client.LST", file_one_list)
+LoadList($first_running_file, file_one_list)
 #puts file_one_list[0]
 #puts "----------------------------------------------------------------------"
 file_two_list = []
-LoadList("RUNNING-Meu.LST", file_two_list)
+LoadList($second_running_file, file_two_list)
 #puts file_two_list[0]
 #puts "----------------------------------------------------------------------"
 
